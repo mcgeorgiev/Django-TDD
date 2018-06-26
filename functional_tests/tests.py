@@ -1,9 +1,10 @@
+from django.test import LiveServerTestCase
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 import unittest
 import time
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -19,7 +20,7 @@ class NewVisitorTest(unittest.TestCase):
 
     def test_can_start_a_list_and_retrieve_it_later(self):
         # Visit To Do app home page
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # Notice the page title in the header
         self.assertIn('To-Do', self.browser.title)
@@ -51,6 +52,3 @@ class NewVisitorTest(unittest.TestCase):
         self.check_for_row_in_list_table('2: Use peacock feathers')
 
         self.fail('Finish the test')
-
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
