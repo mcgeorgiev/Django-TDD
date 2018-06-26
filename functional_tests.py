@@ -46,8 +46,9 @@ class NewVisitorTest(unittest.TestCase):
         input_box.send_keys('Use peacock feathers')
         input_box.send_keys(Keys.ENTER)
         time.sleep(1)
-        self.check_for_row_in_list_table('1: Buy peacock feathers', [row.text for row in rows])
-        self.check_for_row_in_list_table('2: Use peacock feathers', [row.text for row in rows])
+
+        self.check_for_row_in_list_table('1: Buy peacock feathers')
+        self.check_for_row_in_list_table('2: Use peacock feathers')
 
         self.fail('Finish the test')
 
